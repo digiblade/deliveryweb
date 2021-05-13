@@ -200,10 +200,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                @if($data['subtype']=="rss") 
-                <a href="#" class="nav-link active">
+                @if($data['subtype']=="rc") 
+                <a href="{{url('/company/adduser')}}" class="nav-link active">
                 @else
-                <a href="#" class="nav-link">
+                <a href="{{url('/company/adduser')}}" class="nav-link">
+                @endif
+               
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Create User</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                @if($data['subtype']=="rc") 
+                <a href="{{url('/company/company')}}" class="nav-link active">
+                @else
+                <a href="{{url('/company/company')}}" class="nav-link">
+                @endif
+               
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Company</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                @if($data['subtype']=="rss") 
+                <a href="{{url('/company/superstokist')}}" class="nav-link active">
+                @else
+                <a href="{{url('/company/superstokist')}}" class="nav-link">
                 @endif
                
                   <i class="far fa-circle nav-icon"></i>
@@ -212,9 +234,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
               <li class="nav-item"> 
                 @if($data['subtype']=="rd") 
-                <a href="#" class="nav-link active">
+                <a href="{{url('/company/distributor')}}" class="nav-link active">
                 @else
-                <a href="#" class="nav-link">
+                <a href="{{url('/company/distributor')}}" class="nav-link">
                 @endif
                   <i class="far fa-circle nav-icon"></i>
                   <p>Distributor</p>
@@ -222,12 +244,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
               <li class="nav-item">
                 @if($data['subtype']=="rr") 
-                <a href="#" class="nav-link active">
+                <a href="{{url('/company/retailer')}}" class="nav-link active">
                 @else
-                <a href="#" class="nav-link">
+                <a href="{{url('/company/retailer')}}" class="nav-link">
                 @endif
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Retailor</p>
+                  <p>Retailer</p>
                 </a>
               </li>
               <li class="nav-item">

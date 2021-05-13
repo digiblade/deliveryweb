@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,3 +53,13 @@ Route::get('/company/editsubcategory/{sid}',[CompanyController::class,'editSubca
 Route::post('/company/subcategory/edit',[CompanyController::class,'editSubcategoryData']);
 Route::get('/company/deletesubcategory/{cid}',[CompanyController::class,'deleteSubcategoryData']);
 
+//user
+Route::get('/company/adduser',[UserController::class,'createUser']);
+Route::post('/company/user/add',[UserController::class,'createUserData']);
+Route::get('/company/company',[UserController::class,'createUser']);
+
+Route::get('/company/superstokist',[UserController::class,'createUser']);
+
+Route::get('/company/distributor',[UserController::class,'createUser']);
+
+Route::get('/company/retailer',[UserController::class,'createUser']);
