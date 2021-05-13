@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth;
+use App\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,5 @@ use App\Http\Controllers\Api\Auth;
 */
 
 Route::post('/user', [Auth::class,'checkLogin']);
+Route::get('/getalluser', [UserController::class,'getAllUser']);
+

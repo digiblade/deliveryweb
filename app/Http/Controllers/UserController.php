@@ -49,6 +49,8 @@ class UserController extends Controller
             "user_godownaddress"=>$req->godownadd,
             'user_description'=>$req->description,
             'user_password'=>Hash::make($req->email),
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now(),
         );
         try{
             if(UserModel::insert($input)){
