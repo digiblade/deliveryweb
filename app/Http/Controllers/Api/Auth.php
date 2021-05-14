@@ -24,4 +24,7 @@ class Auth extends Controller
        
         return $msg;
     }
+    public function getPassword(Request $req){
+        return Hash::make($req->password);
+    }
 }

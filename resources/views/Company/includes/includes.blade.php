@@ -99,9 +99,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
+        {{-- <div class="image">
           <img src="{{url('/')}}/assets/profiles/{{$data['profile']->user_image}}" class="img-circle elevation-2" alt="User Image">
-        </div>
+        </div> --}}
         <div class="info">
           <a href="#" class="d-block">{{$data['profile']->user_name}}</a>
         </div>

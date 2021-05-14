@@ -25,6 +25,7 @@ class UserController extends Controller
     }
     public function createUserData(Request $req){
         $validation['firmname'] = 'required';
+
         $validation['fullname'] = 'required';
         $validation['mobileno'] = 'required';
         if($req->usertype=="1"){
@@ -37,7 +38,7 @@ class UserController extends Controller
             'user_email.required'=>'email is required',
             'user_email.unique'=>'email must be unique',
         ]);
-        
+          $aid = session("user_id");
         $input = array(
             "user_type" =>$req->usertype,
             "user_firmname" => $req->firmname,
@@ -49,6 +50,7 @@ class UserController extends Controller
             "user_godownaddress"=>$req->godownadd,
             'user_description'=>$req->description,
             'user_password'=>Hash::make($req->email),
+            'user_parentid'=>$aid,
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now(),
         );
