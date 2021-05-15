@@ -211,7 +211,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                @if($data['subtype']=="rc") 
+                @if($data['subtype']=="rco") 
                 <a href="{{url('/company/company')}}" class="nav-link active">
                 @else
                 <a href="{{url('/company/company')}}" class="nav-link">

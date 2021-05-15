@@ -56,10 +56,9 @@ Route::get('/company/deletesubcategory/{cid}',[CompanyController::class,'deleteS
 //user
 Route::get('/company/adduser',[UserController::class,'createUser']);
 Route::post('/company/user/add',[UserController::class,'createUserData']);
-Route::get('/company/company',[UserController::class,'createUser']);
+Route::get('/company/company',[UserController::class,'getCompany']);
+Route::get('/company/superstokist',[UserController::class,'getSuperStokist']);
+Route::get('/company/distributor',[UserController::class,'getDistributor']);
+Route::get('/company/retailer',[UserController::class,'getRetailer']);
 
-Route::get('/company/superstokist',[UserController::class,'createUser']);
 
-Route::get('/company/distributor',[UserController::class,'createUser']);
-
-Route::get('/company/retailer',[UserController::class,'createUser']);

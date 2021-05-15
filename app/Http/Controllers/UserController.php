@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Carbon;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\AssetsModel;
@@ -65,5 +65,17 @@ class UserController extends Controller
             return redirect()->back()->with('failure',$e);
         }
         
+    }
+    public function getCompany(){
+        if(session("user_id")==null){
+            return redirect("/");
+        }
+        $data['logo'] = AssetsModel::get()->first();
+        $id = session("user_id");
+        $data['profile'] = NewUser::where("user_id","=",$id)->first();
+        $data['type']  = "ruser";
+        $data['subtype'] = "rco";
+        $data['user'] = UserModel::orderBy('user_id','desc')->get();
+        return view('Company.User.user',compact('data'));
     }
 }
