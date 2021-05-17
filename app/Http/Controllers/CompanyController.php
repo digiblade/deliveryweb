@@ -135,7 +135,7 @@ class CompanyController extends Controller
         $data['subtype'] = "";
         $data['subcategory'] = SubcategoryModel::orderBy('subcategory_id','desc')->get();
         // return $data;
-        return view('Company.SubCategory.subcategory',compact('data'));
+        return view('Company.Subcategory.subcategory',compact('data'));
     }
     public function addSubcategory(){
         if(session("user_id")==null){

@@ -75,7 +75,61 @@ class UserController extends Controller
         $data['profile'] = NewUser::where("user_id","=",$id)->first();
         $data['type']  = "ruser";
         $data['subtype'] = "rco";
-        $data['user'] = UserModel::orderBy('user_id','desc')->get();
-        return view('Company.User.user',compact('data'));
+        $data['user'] = UserModel::where('user_type','=',1)->orderBy('user_id','desc')->get();
+        $pagename = "Company";
+        return view('Company.User.user',compact('data', 'pagename'));
     }
+    public function getSuperStokist(){
+        if(session("user_id")==null){
+            return redirect("/");
+        }
+        $data['logo'] = AssetsModel::get()->first();
+        $id = session("user_id");
+        $data['profile'] = NewUser::where("user_id","=",$id)->first();
+        $data['type']  = "ruser";
+        $data['subtype'] = "rss";
+        $data['user'] = UserModel::where('user_type','=',2)->orderBy('user_id','desc')->get();
+        $pagename = "Super Stokist";
+        return view('Company.User.user',compact('data', 'pagename'));
+    }
+    public function getDistributor(){
+        if(session("user_id")==null){
+            return redirect("/");
+        }
+        $data['logo'] = AssetsModel::get()->first();
+        $id = session("user_id");
+        $data['profile'] = NewUser::where("user_id","=",$id)->first();
+        $data['type']  = "ruser";
+        $data['subtype'] = "rd";
+        $data['user'] = UserModel::where('user_type','=',3)->orderBy('user_id','desc')->get();
+        $pagename = "Distributor";
+        return view('Company.User.user',compact('data', 'pagename'));
+    }
+    public function getRetailer(){
+        if(session("user_id")==null){
+            return redirect("/");
+        }
+        $data['logo'] = AssetsModel::get()->first();
+        $id = session("user_id");
+        $data['profile'] = NewUser::where("user_id","=",$id)->first();
+        $data['type']  = "ruser";
+        $data['subtype'] = "rr";
+        $data['user'] = UserModel::where('user_type','=',4)->orderBy('user_id','desc')->get();
+        $pagename = "Retailer";
+        return view('Company.User.user',compact('data', 'pagename'));
+    }
+    public function getAreaSalesManager(){
+        if(session("user_id")==null){
+            return redirect("/");
+        }
+        $data['logo'] = AssetsModel::get()->first();
+        $id = session("user_id");
+        $data['profile'] = NewUser::where("user_id","=",$id)->first();
+        $data['type']  = "ruser";
+        $data['subtype'] = "rs";
+        $data['user'] = UserModel::where('user_type','=',5)->orderBy('user_id','desc')->get();
+        $pagename = "Area Sales Manager";
+        return view('Company.User.user',compact('data', 'pagename'));
+    }
+    
 }

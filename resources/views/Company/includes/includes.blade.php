@@ -48,27 +48,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="fa fa-power-off"></i>
         </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-center">
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
-            <div class="media">
-              <img src="{{url('/')}}/assets/profiles/{{$data['profile']->user_image}}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
+            {{-- <div class="media">
+              <div class="media-title"> --}}
+                <a href="/logout" class="btn btn-warning text-white m-3">Logout</a>
+              {{-- </div> --}}
+              {{-- <div class="media-body">
                 <h3 class="dropdown-item-title" >
                     {{$data['profile']->user_name}}    
-                </h3>
-                <h3 class="dropdown-item-title" >
+                    <a href="/logout" class="">Logout</a>
+                </h3> --}}
+                {{-- <div class="dropdown-item-body" >
                     @if($data['profile']->user_type==1)
                    (Company)
                     @endif   
                     @if($data['profile']->user_type==2)
                     (Super Stalkist)
-                    @endif              
-                </h3>
-                <div class="d-flex justify-content-center mr-2 mb-2">
+                    @endif   
+                    <span class="dropdown-item-body"> </span>     
+                </div> --}}
+                
+                {{-- <div class="d-flex justify-content-center mr-2 mb-2">
                     <a href="/logout" class="">Logout</a>
-                  </div>
-              </div>
+                  </div> --}}
+              {{-- </div> --}}
             </div>
             <!-- Message End -->
           </a>
@@ -253,7 +258,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                @if($data['subtype']=="rs") 
+                <a href="{{url('/company/sales')}}" class="nav-link active">
+                @else
+                <a href="{{url('/company/sales')}}" class="nav-link">
+                  @endif
                   <i class="far fa-circle nav-icon"></i>
                   <p>Area Sales Manager</p>
                 </a>

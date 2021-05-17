@@ -60,5 +60,6 @@ Route::get('/company/company',[UserController::class,'getCompany']);
 Route::get('/company/superstokist',[UserController::class,'getSuperStokist']);
 Route::get('/company/distributor',[UserController::class,'getDistributor']);
 Route::get('/company/retailer',[UserController::class,'getRetailer']);
+Route::get('/company/sales',[UserController::class,'getAreaSalesManager']);
 
 

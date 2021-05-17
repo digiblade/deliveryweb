@@ -43,8 +43,14 @@
                   <thead>
                   <tr>
                     <th>S/No.</th>
-                    <th>nam</th>
-                    <th>Category Image</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile No.</th>
+                    <th>Firm Name</th>
+                    <th>GST NO.</th>
+                    <th>Office Add</th>
+                    <th>Godown Add</th>
+                    <th>Description</th>
                     <th>Creation</th>
                     <th>Action</th>
                   </tr>
@@ -53,15 +59,21 @@
                     @php
                         $i = 1;
                     @endphp
-                    @foreach ($data['category'] as $item)
+                    @foreach ($data['user'] as $item)
                       <tr>
                         <td> {{$i++}}</td>
-                        <td>{{$item->category_name}}</td>
-                        <td><img src="{{url('/')}}/assets/categories/{{$item->category_image}}" height="150px" width="250px" alt=""></td>
-                        <td> {{$item->created_at}}</td>
+                        <td>{{$item->user_name}}</td>
+                        <td>{{$item->user_email}}</td>
+                        <td>{{$item->user_mobile}}</td>
+                        <td>{{$item->user_firmname}}</td>
+                        <td>{{$item->user_gstNo}}</td>
+                        <td>{{$item->user_officeaddress}}</td>
+                        <td>{{$item->user_godownaddress}}</td>
+                        <td>{{$item->user_description}}</td>
+                        <td>{{$item->created_at}}</td>
                         <td>
-                            <a href="/company/editcategory/{{$item->id}}" class="btn btn-primary m-2"><i class="fa fa-edit"></i></a>
-                            <a href="/company/deletecategory/{{$item->id}}" class="btn btn-danger m-2"><i class="fa fa-trash"></i></a>
+                            {{-- <a href="/company/editcategory/{{$item->user_id}}" class="btn btn-primary m-2"><i class="fa fa-edit"></i></a>
+                            <a href="/company/deletecategory/{{$item->user_id}}" class="btn btn-danger m-2"><i class="fa fa-trash"></i></a> --}}
                         </td>
                       </tr>
 
@@ -71,8 +83,14 @@
                   <tfoot>
                     <tr>
                       <th>S/No.</th>
-                      <th>Category</th>
-                      <th>Category Image</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Mobile No.</th>
+                      <th>Firm Name</th>
+                      <th>GST NO.</th>
+                      <th>Office Add</th>
+                      <th>Godown Add</th>
+                      <th>Description</th>
                       <th>Creation</th>
                       <th>Action</th>
                     </tr>
