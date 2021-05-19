@@ -61,5 +61,8 @@ Route::get('/company/superstokist',[UserController::class,'getSuperStokist']);
 Route::get('/company/distributor',[UserController::class,'getDistributor']);
 Route::get('/company/retailer',[UserController::class,'getRetailer']);
 Route::get('/company/sales',[UserController::class,'getAreaSalesManager']);
+Route::get('/company/edituser/{type}/{id}',[UserController::class,'editUser']);
+Route::post('/company/user/edit',[UserController::class,'editUserData']);
+Route::get('/company/user/delete/{id}',[UserController::class,'deleteUserData']);
 
 

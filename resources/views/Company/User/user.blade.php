@@ -72,8 +72,8 @@
                         <td>{{$item->user_description}}</td>
                         <td>{{$item->created_at}}</td>
                         <td>
-                            {{-- <a href="/company/editcategory/{{$item->user_id}}" class="btn btn-primary m-2"><i class="fa fa-edit"></i></a>
-                            <a href="/company/deletecategory/{{$item->user_id}}" class="btn btn-danger m-2"><i class="fa fa-trash"></i></a> --}}
+                            <a href="{{url('/')}}/company/edituser/{{$type}}/{{$item->user_id}}" class="btn btn-primary m-2"><i class="fa fa-edit"></i></a>
+                            <a href="{{url('/')}}/company/user/delete/{{$item->user_id}}" class="btn btn-danger m-2"><i class="fa fa-trash"></i></a>
                         </td>
                       </tr>
 
