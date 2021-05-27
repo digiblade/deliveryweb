@@ -20,6 +20,7 @@ class UserController extends Controller
         $data['profile'] = NewUser::where("user_id","=",$id)->first();
         $data['type']  = "ruser";
         $data['subtype'] = "rc";
+        
         // $data['category'] = CategoryModel::orderBy('id','desc')->get();
         return view('Company.User.addUser',compact('data'));
     }
@@ -30,7 +31,10 @@ class UserController extends Controller
         $validation['mobileno'] = 'required';
         if($req->usertype=="1"){
             $validation['gst'] = 'required';
+        }else{
+            $validation['parent'] = 'required';
         }
+        
         $validation['user_email'] = 'required|unique:tbl_users';
         $validation['officeadd'] ='required';
         $validation['godownadd'] = 'required';
@@ -50,7 +54,7 @@ class UserController extends Controller
             "user_godownaddress"=>$req->godownadd,
             'user_description'=>$req->description,
             'user_password'=>Hash::make('123456'),
-            'user_parentid'=>$aid,
+            'user_parentid'=>$req->parent,
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now(),
         );
@@ -146,6 +150,7 @@ class UserController extends Controller
         $data['type']  = "ruser";
         $data['subtype'] = $this->getType($type);
         $data['user'] = UserModel::where('user_id','=',$id)->get()->first();
+        
         $pagename = $this->getPagename($type);
         return view('Company.User.editUser',compact('data','pagename'));
     }

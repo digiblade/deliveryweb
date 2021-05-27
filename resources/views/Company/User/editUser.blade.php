@@ -35,22 +35,7 @@
               <div class="card-body">
                 <form action="/company/user/edit/" method="post" enctype="multipart/form-data">
                   @csrf
-                  <input type="hidden" name="id" value="{{$data['user']->user_id}}">
-                  <div class="form-group">
-                    <label for="Category_name">User Type</label>
-                    <select type="text" name="usertype" class="form-control">
-                      <option value="1" @if($data['user']->user_type==1) selected @endif>Company</option>
-                      <option value="2" @if($data['user']->user_type==2) selected @endif>Super Stokist</option>
-                      <option value="3" @if($data['user']->user_type==3) selected @endif>Distributor</option>
-                      <option value="4" @if($data['user']->user_type==4) selected @endif>Retailor</option>
-                      <option value="5" @if($data['user']->user_type==5) selected @endif>Area Sales Manager</option>
-                    </select>
-                    @error('usertype')
-                        <div class="badge badge-danger">
-                          {{$message}}
-                        </div>
-                    @enderror
-                  </div>
+                 
                   <div class="form-group">
                     <label for="Category_name">Firm Name</label>
                     <input type="text" name="firmname" value="{{$data['user']->user_firmname}}" class="form-control">

@@ -247,7 +247,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <p>Distributor</p>
                 </a>
               </li>
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 @if($data['subtype']=="rr") 
                 <a href="{{url('/company/retailer')}}" class="nav-link active">
                 @else
@@ -256,7 +256,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <i class="far fa-circle nav-icon"></i>
                   <p>Retailer</p>
                 </a>
-              </li>
+              </li> --}}
               <li class="nav-item">
                 @if($data['subtype']=="rs") 
                 <a href="{{url('/company/sales')}}" class="nav-link active">

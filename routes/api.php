@@ -18,4 +18,7 @@ use App\Http\Controllers\Api\UserController;
 Route::post('/getpassword',[Auth::class,'getPassword']);
 Route::post('/user', [Auth::class,'checkLogin']);
 Route::get('/getalluser', [UserController::class,'getAllUser']);
+Route::get('/getalluser/{type}', [UserController::class,'getUserByType']);
+Route::Post('/addUser',[UserController::class,'addUser']);
+
 

@@ -1,6 +1,22 @@
 @extends('Company.includes.includes')
 @section('content')
+<script>
+ async function changeParent (parentType)  { 
+   var dim = ''
+   var res = await fetch('{{url('/')}}/api/getalluser/'+parentType)
+   var data = await res.json()
+   console.log(data)
+   if(data.length==0){
+    dim = '<option value="0" selected>Company</option>'
 
+   }
+   for (var row in data){
+     dim += '<option value="'+data[row].user_id+'" >'+data[row].user_name+'</option>'
+   }
+   document.getElementById('parent').innerHTML = dim 
+  }
+  changeParent(0)
+</script>
   <div class="content-wrapper">
     <div class="content-header">
       <div class="container-fluid">
@@ -37,14 +53,24 @@
                     @csrf
                     <div class="form-group">
                       <label for="Category_name">User Type</label>
-                      <select type="text" name="usertype" class="form-control">
+                      <select type="text" name="usertype" onchange="changeParent(this.value)" class="form-control">
                         <option value="1" selected>Company</option>
                         <option value="2">Super Stokist</option>
                         <option value="3">Distributor</option>
-                        <option value="4">Retailor</option>
-                        <option value="5">Area Sales Manager</option>
+                        <option value="4">Area Sales Manager</option>
                       </select>
                       @error('usertype')
+                          <div class="badge badge-danger">
+                            {{$message}}
+                          </div>
+                      @enderror
+                    </div>
+                    <div class="form-group">
+                      <label for="Category_name">Parent</label>
+                      <select type="text" id="parent" name="parent"  class="form-control">
+                        
+                      </select>
+                      @error('parent')
                           <div class="badge badge-danger">
                             {{$message}}
                           </div>

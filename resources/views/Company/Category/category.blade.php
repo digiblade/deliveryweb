@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Category</h1>
+            <h1 class="m-0">SKU</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Category</a></li>
-              <li class="breadcrumb-item active">View Category</li>
+              <li class="breadcrumb-item"><a href="#">SKU</a></li>
+              <li class="breadcrumb-item active">View SKU</li>
             </ol>
           </div>
         </div>
@@ -35,7 +35,7 @@
           <div class="col-lg-12">
             <div class="card card-primary card-outline">
               <div class="card-header">
-               <b>All Category</b> 
+               <b>All SKU</b> 
                 <div class="float-right"> <a href="/company/addcategory" class="btn btn-primary">Add </a> </div>
               </div>
               <div class="card-body">
@@ -43,8 +43,8 @@
                   <thead>
                   <tr>
                     <th>S/No.</th>
-                    <th>Category</th>
-                    <th>Category Image</th>
+                    <th>SKU name</th>
+                    <th>SKU Image</th>
                     <th>Creation</th>
                     <th>Action</th>
                   </tr>
