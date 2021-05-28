@@ -160,11 +160,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             @endif
               <i class="nav-icon fas fa-list-alt"></i>
               <p>
-                Manage Category
+                Manage SKU
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             @if($data['type']=="subcategory") 
             <a href="/company/subcategory" class="nav-link active">
               @else
@@ -175,12 +175,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 Manage Subcategory
               </p>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item">
             @if($data['type']=="product") 
-            <a href="/company/dashboard" class="nav-link active">
+            <a href="/company/product" class="nav-link active">
               @else
-              <a href="/company/dashboard" class="nav-link">
+              <a href="/company/product" class="nav-link">
             @endif
               <i class="nav-icon fa fa-bars"></i>
               <p>
@@ -188,6 +188,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
+          
          
            
             @if($data['type']=="ruser") 

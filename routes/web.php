@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,13 +46,13 @@ Route::get('/company/subcategory/{cid}',[CompanyController::class,'getCategory']
 Route::get('/company/test/',[CompanyController::class,'openForm']);
 Route::get('/company/testdata/{sid}',[CompanyController::class,'openEditForm']);
 
-//subcategory
-Route::get('/company/subcategory',[CompanyController::class,'subcategory']);
-Route::get('/company/addsubcategory',[CompanyController::class,'addSubcategory']);
-Route::post('/company/subcategory/add',[CompanyController::class,'addSubcategoryData']);
-Route::get('/company/editsubcategory/{sid}',[CompanyController::class,'editSubcategory']);
-Route::post('/company/subcategory/edit',[CompanyController::class,'editSubcategoryData']);
-Route::get('/company/deletesubcategory/{cid}',[CompanyController::class,'deleteSubcategoryData']);
+//product
+Route::get('/company/product',[ProductController::class,'getProduct']);
+Route::get('/company/addproduct',[ProductController::class,'addProduct']);
+Route::post('/company/product/add',[ProductController::class,'addProductData']);
+Route::get('/company/editproduct/{pid}',[ProductController::class,'editProduct']);
+Route::post('/company/product/edit',[ProductController::class,'editProductData']);
+Route::get('/company/deleteproduct/{pid}',[ProductController::class,'deleteProductData']);
 
 //user
 Route::get('/company/adduser',[UserController::class,'createUser']);
