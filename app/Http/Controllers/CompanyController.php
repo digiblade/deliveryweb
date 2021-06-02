@@ -8,6 +8,8 @@ use App\Models\AssetsModel;
 use App\Models\CategoryModel;
 use App\Models\SubcategoryModel;
 use App\Models\NewUser;
+use App\Models\UserModel;
+use App\Models\ProductModel;
 class CompanyController extends Controller
 {
     public function dashboard(){
@@ -19,7 +21,13 @@ class CompanyController extends Controller
         $data['profile'] = NewUser::where("user_id","=",$id)->first();
         $data['type']  = "dashboard";
         $data['subtype'] = "";
-        
+        $data['skucount'] = count(CategoryModel::get());
+        $data['usercount'] = count(UserModel::get());
+        $data['companycount'] = count(UserModel::where("user_type","=","1")->get());
+        $data['sscount'] = count(UserModel::where("user_type","=","2")->get());;
+        $data['distributorcount'] = count(UserModel::where("user_type","=","3")->get());;
+        $data['asmcount'] = count(UserModel::where("user_type","=","4")->get());;
+        $data['productcount'] = count(ProductModel::get());;
         return view("Company.dashboard",compact('data'));
     }
     public function category(){

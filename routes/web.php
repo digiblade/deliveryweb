@@ -53,6 +53,13 @@ Route::post('/company/product/add',[ProductController::class,'addProductData']);
 Route::get('/company/editproduct/{pid}',[ProductController::class,'editProduct']);
 Route::post('/company/product/edit',[ProductController::class,'editProductData']);
 Route::get('/company/deleteproduct/{pid}',[ProductController::class,'deleteProductData']);
+//manufacturing
+Route::get('/company/manufacturing/{pid}',[ProductController::class,'getManufacturing']);
+Route::get('/company/addmanufacturing/{pid}',[ProductController::class,'addManufacturing']);
+Route::post('/company/manufacturing/add',[ProductController::class,'addManufacturingData']);
+Route::get('/company/editmanufacturing/{pid}',[ProductController::class,'editManufacturing']);
+Route::post('/company/manufacturing/edit',[ProductController::class,'editManufacturingData']);
+Route::get('/company/deletemanufacturing/{pid}',[ProductController::class,'deleteManufacturingData']);
 
 //user
 Route::get('/company/adduser',[UserController::class,'createUser']);

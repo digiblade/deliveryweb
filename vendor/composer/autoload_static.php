@@ -521,6 +521,7 @@ class ComposerStaticInita2e2ae904d146615706adee3b6e3650e
         'App\\Models\\AssetsModel' => __DIR__ . '/../..' . '/app/Models/AssetsModel.php',
         'App\\Models\\CategoryModel' => __DIR__ . '/../..' . '/app/Models/CategoryModel.php',
         'App\\Models\\CityModel' => __DIR__ . '/../..' . '/app/Models/CityModel.php',
+        'App\\Models\\ManufacturingModel' => __DIR__ . '/../..' . '/app/Models/ManufacturingModel.php',
         'App\\Models\\NewUser' => __DIR__ . '/../..' . '/app/Models/NewUser.php',
         'App\\Models\\ProductModel' => __DIR__ . '/../..' . '/app/Models/ProductModel.php',
         'App\\Models\\StateModel' => __DIR__ . '/../..' . '/app/Models/StateModel.php',
