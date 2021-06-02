@@ -8,7 +8,7 @@ use App\Models\ManufacturingModel   ;
 use App\Models\AssetsModel;
 use App\Models\UserModel;
 use App\Models\CategoryModel;
-use App\Models\newUser;
+use App\Models\NewUser;
 class ProductController extends Controller
 {
     public function getProduct(){
