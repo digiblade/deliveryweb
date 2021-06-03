@@ -46,7 +46,7 @@ class ProductController extends Controller
             'description'=> 'required',
             'pImage'=> 'required',
         ]);
-        
+        $id = session("user_id");
         $path = 'assets/product/';
         // unlink($path.$req->oldimg);
         $subcategoryImage = $req->file('pImage');
@@ -62,7 +62,7 @@ class ProductController extends Controller
         $input['product_distributorprice'] = $req->dprice;
         $input['product_retailerprice'] = $req->rprice;
         $input['product_description'] = $req->description;
-
+        $input['product_companyid'] = $id;
         $input['updated_at'] = \Carbon\Carbon::now();
         $input['created_at'] = \Carbon\Carbon::now();
         
