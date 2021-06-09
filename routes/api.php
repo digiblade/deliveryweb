@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,6 @@ Route::get('/getalluser', [UserController::class,'getAllUser']);
 Route::get('/getalluser/{type}', [UserController::class,'getUserByType']);
 Route::Post('/addUser',[UserController::class,'addUser']);
 
+//products
+Route::get('/products/get',[ProductController::class,'getProducts']);
 
