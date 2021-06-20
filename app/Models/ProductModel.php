@@ -31,6 +31,6 @@ class ProductModel extends Model
         'updated_at',
     ];
     public function category(){
-        return $this->hasOne(CategoryModel::class,"id","category_id");
+        return $this->hasOne(ManufacturingModel::class,"manufacturing_id","id");
     }
 }
