@@ -8,7 +8,7 @@ use App\Models\ProductModel;
 class ProductController extends Controller
 {
     public function getProducts(){
-        return ProductModel::orderBy('id','desc')->get();
+        return ProductModel::orderBy('id','desc')->with('category','category.sku')->get();
     }
     public function getProductsById(Request $req){
 
