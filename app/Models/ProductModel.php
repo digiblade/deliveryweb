@@ -31,6 +31,6 @@ class ProductModel extends Model
         'updated_at',
     ];
     public function category(){
-        return $this->hasMany(ManufacturingModel::class,"manufacturing_id","id");
+        return $this->hasMany(ManufacturingModel::class,"manufacturing_productid","id");
     }
 }
