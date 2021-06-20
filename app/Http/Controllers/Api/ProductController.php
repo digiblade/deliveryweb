@@ -12,6 +12,6 @@ class ProductController extends Controller
     }
     public function getProductsById(Request $req){
 
-        return ProductModel::where("product_companyid","=",$req->cid)->orderBy('id','desc')->get()->category();
+        return ProductModel::where("product_companyid","=",$req->cid)->orderBy('id','desc')->with('category')->get();
     }
 }
