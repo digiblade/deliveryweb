@@ -23,5 +23,6 @@ Route::get('/getalluser/{type}', [UserController::class,'getUserByType']);
 Route::Post('/addUser',[UserController::class,'addUser']);
 
 //products
-Route::get('/products/get',[ProductController::class,'getProducts']);
+Route::get('/products/get/',[ProductController::class,'getProducts']);
+Route::post('/products/get/',[ProductController::class,'getProductsById']);
 
