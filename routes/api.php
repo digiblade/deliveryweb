@@ -25,4 +25,6 @@ Route::Post('/addUser',[UserController::class,'addUser']);
 //products
 Route::get('/products/get/',[ProductController::class,'getProducts']);
 Route::post('/products/get/',[ProductController::class,'getProductsById']);
+//order
+Route::post('/order/create',[ProductController::class,'createOrder']);
 
