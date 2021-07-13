@@ -37,6 +37,6 @@ class ProductController extends Controller
     public function getOrder(Request $req){
         // $data = UserModel::where("user_email","=",$req->userid)->get();
         
-        return orderModel::with('product','sku','user')->get();
+        return orderModel::where("order_userid","=",$req->userid)->with('product','sku','user')->get();
     }
 }
