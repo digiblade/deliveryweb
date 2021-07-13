@@ -13,7 +13,7 @@ class orderModel extends Model
         return  $this->hasOne(ProductModel::class,"id","order_productid");
      }
      public function sku(){
-        return  $this->hasOne(CategoryModel::class,"id","order_id");
+        return  $this->hasOne(CategoryModel::class,"id","order_skuid");
      }
      public function user(){
          return $this->hasOne(UserModel::class,"user_email","order_userid");
