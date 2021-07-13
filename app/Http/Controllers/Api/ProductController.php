@@ -5,7 +5,8 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ProductModel;
-use App\Models\OrderModel;
+use App\Models\orderModel;
+use App\Models\UserModel;
 class ProductController extends Controller
 {
     public function getProducts(){
@@ -25,11 +26,17 @@ class ProductController extends Controller
             "order_quantity"=>$req->quantity,
             "created_at"=>\Carbon\Carbon::now(),
             "updated_at"=>\Carbon\Carbon::now(),
+            "order_groupid"=>$req->groupid,
         ];
         if(OrderModel::insert($input)){
             return array("response"=>true);
         }else{
             return array("response"=>false);
         }
+    }
+    public function getOrder(Request $req){
+        // $data = UserModel::where("user_email","=",$req->userid)->get();
+        
+        return orderModel::with('product','sku','user')->get();
     }
 }

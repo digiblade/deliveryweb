@@ -27,4 +27,6 @@ Route::get('/products/get/',[ProductController::class,'getProducts']);
 Route::post('/products/get/',[ProductController::class,'getProductsById']);
 //order
 Route::post('/order/create',[ProductController::class,'createOrder']);
+Route::post('/order/view',[ProductController::class,'getOrder']);
+
 
