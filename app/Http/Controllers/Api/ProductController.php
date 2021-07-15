@@ -39,8 +39,10 @@ class ProductController extends Controller
         
         return orderModel::where("order_userid","=",$req->userid)->with('product','sku','user')->get();
     }
+
+    //api
     public function getProductAPI(){ 
-        $data['product'] = ProductModel::orderBy('id','desc')->get();
+        $data = ProductModel::orderBy('id','desc')->get();
         return $data;
     }
     
@@ -83,7 +85,7 @@ class ProductController extends Controller
     }
     public function editProductAPI(Request $req,$pid){
            
-        $data['product'] = ProductModel::where("id","=",$pid)->orderBy('id','desc')->get()->first();
+        $data = ProductModel::where("id","=",$pid)->orderBy('id','desc')->get()->first();
         return $data;
     }
     public function editProductDataAPI(Request $req){
