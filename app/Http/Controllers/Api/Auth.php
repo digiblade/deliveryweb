@@ -15,6 +15,7 @@ class Auth extends Controller
         if($user != null){
             if(Hash::check($req->password,$user->user_password)){
                 $msg['response'] = true;
+                $msg['id'] = $user->user_id;
             }else{
                 $msg['error'] = "Check Password";
             }

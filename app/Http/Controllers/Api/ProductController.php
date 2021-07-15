@@ -52,8 +52,8 @@ class ProductController extends Controller
         $data['productcount'] = count(ProductModel::get());;
         return $data;
     }
-    public function getProductAPI(){ 
-        $data = ProductModel::orderBy('id','desc')->get();
+    public function getProductAPI(Request $req,$id){ 
+        $data = ProductModel::where("product_companyid","=",$id)->orderBy('id','desc')->get();
         return $data;
     }
     
