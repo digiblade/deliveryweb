@@ -41,6 +41,16 @@ class ProductController extends Controller
     }
 
     //api
+    public function dashboard(){
+        $data['skucount'] = count(CategoryModel::get());
+        $data['usercount'] = count(UserModel::get());
+        $data['companycount'] = count(UserModel::where("user_type","=","1")->get());
+        $data['sscount'] = count(UserModel::where("user_type","=","2")->get());;
+        $data['distributorcount'] = count(UserModel::where("user_type","=","3")->get());;
+        $data['asmcount'] = count(UserModel::where("user_type","=","4")->get());;
+        $data['productcount'] = count(ProductModel::get());;
+        return $data;
+    }
     public function getProductAPI(){ 
         $data = ProductModel::orderBy('id','desc')->get();
         return $data;

@@ -17,6 +17,7 @@ use App\Http\Controllers\Api\ProductController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get('/company/dashboard/',[ProductController::class,'dashboard']);
 Route::post('/getpassword',[Auth::class,'getPassword']);
 Route::post('/user', [Auth::class,'checkLogin']);
 Route::get('/getalluser', [UserController::class,'getAllUser']);
