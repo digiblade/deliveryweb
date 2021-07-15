@@ -186,6 +186,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            @if($data['type']=="order") 
+            <a href="/company/order" class="nav-link active">
+              @else
+              <a href="/company/order" class="nav-link">
+            @endif
+              <i class="nav-icon fa fa-bars"></i>
+              <p>
+                Manage Order
+              </p>
+            </a>
+          </li>
           
          
            

@@ -29,4 +29,10 @@ Route::post('/products/get/',[ProductController::class,'getProductsById']);
 Route::post('/order/create',[ProductController::class,'createOrder']);
 Route::post('/order/view',[ProductController::class,'getOrder']);
 
-
+//product company
+Route::get('/company/product',[ProductController::class,'getProduct']);
+Route::get('/company/addproduct',[ProductController::class,'addProduct']);
+Route::post('/company/product/add',[ProductController::class,'addProductData']);
+Route::get('/company/editproduct/{pid}',[ProductController::class,'editProduct']);
+Route::post('/company/product/edit',[ProductController::class,'editProductData']);
+Route::get('/company/deleteproduct/{pid}',[ProductController::class,'deleteProductData']);
