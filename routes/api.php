@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,9 +31,9 @@ Route::post('/order/create',[ProductController::class,'createOrder']);
 Route::post('/order/view',[ProductController::class,'getOrder']);
 
 //product company
-Route::get('/company/product',[ProductController::class,'getProduct']);
-Route::get('/company/addproduct',[ProductController::class,'addProduct']);
-Route::post('/company/product/add',[ProductController::class,'addProductData']);
-Route::get('/company/editproduct/{pid}',[ProductController::class,'editProduct']);
-Route::post('/company/product/edit',[ProductController::class,'editProductData']);
-Route::get('/company/deleteproduct/{pid}',[ProductController::class,'deleteProductData']);
+Route::get('/company/product',[ProductController::class,'getProductAPI']);
+Route::get('/company/addproduct',[ProductController::class,'addProductAPI']);
+Route::post('/company/product/add',[ProductController::class,'addProductDataAPI']);
+Route::get('/company/editproduct/{pid}',[ProductController::class,'editProductAPI']);
+Route::post('/company/product/edit',[ProductController::class,'editProductDataAPI']);
+Route::get('/company/deleteproduct/{pid}',[ProductController::class,'deleteProductDataAPI']);
