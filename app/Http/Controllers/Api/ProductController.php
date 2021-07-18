@@ -53,7 +53,7 @@ class ProductController extends Controller
         return $data;
     }
     public function getProductAPI(Request $req,$id){ 
-        $data = ProductModel::where("product_companyid","=",$id)->orderBy('id','desc')->with('category')->get();
+        $data = ProductModel::where("product_companyid","=",$id)->orderBy('id','desc')->with('category','category.sku')->get();
         return $data;
     }
     
