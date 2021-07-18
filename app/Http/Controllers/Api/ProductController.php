@@ -78,11 +78,11 @@ class ProductController extends Controller
             $input['updated_at'] = \Carbon\Carbon::now();
             $input['created_at'] = \Carbon\Carbon::now();
             
-            if(ProductModel::insert($input)){
-                return array("response"=>true);
-            }else{
-                return array("response"=>false);
-            }
+            // if(ProductModel::insert($input)){
+            //     return array("response"=>true);
+            // }else{
+            //     return array("response"=>false);
+            // }
         }catch(Exception $e){
             echo $e;
         }
