@@ -58,6 +58,34 @@ class ProductController extends Controller
     }
     
     public function addProductDataAPI(Request $req){
+        try{
+            $path = 'assets/product/';
+            // unlink($path.$req->oldimg);
+            $subcategoryImage = $req->file('pImage');
+            $sCImage = date("Y_m_d_H_i_s");
+            $ext = strtolower($subcategoryImage->getClientOriginalExtension());
+            $imageName = $sCImage.".".$ext;
+            $subcategoryImage->move($path,$imageName);
+            $input['product_image'] = $imageName;
+            $input['product_name'] = $req->pName;        
+            $input['product_hsncode'] = $req->hsncode;
+            $input['product_baseprice'] = $req->baseprice;
+            $input['product_stokistprice'] = $req->sprice;
+            $input['product_distributorprice'] = $req->dprice;
+            $input['product_retailerprice'] = $req->rprice;
+            $input['product_description'] = $req->description;
+            $input['product_companyid'] = $req->id;
+            $input['updated_at'] = \Carbon\Carbon::now();
+            $input['created_at'] = \Carbon\Carbon::now();
+            
+            if(ProductModel::insert($input)){
+                return array("response"=>true);
+            }else{
+                return array("response"=>false);
+            }
+        }catch(Exception $e){
+            echo $e;
+        }
         // $validate = validator([
         //     'pName' => 'required',
         //     'hsncode'=> 'required',
@@ -69,30 +97,7 @@ class ProductController extends Controller
         //     'pImage'=> 'required',
         // ]);
       
-        $path = 'assets/product/';
-        // unlink($path.$req->oldimg);
-        $subcategoryImage = $req->file('pImage');
-        $sCImage = date("Y_m_d_H_i_s");
-        $ext = strtolower($subcategoryImage->getClientOriginalExtension());
-        $imageName = $sCImage.".".$ext;
-        $subcategoryImage->move($path,$imageName);
-        $input['product_image'] = $imageName;
-        $input['product_name'] = $req->pName;        
-        $input['product_hsncode'] = $req->hsncode;
-        $input['product_baseprice'] = $req->baseprice;
-        $input['product_stokistprice'] = $req->sprice;
-        $input['product_distributorprice'] = $req->dprice;
-        $input['product_retailerprice'] = $req->rprice;
-        $input['product_description'] = $req->description;
-        $input['product_companyid'] = $req->id;
-        $input['updated_at'] = \Carbon\Carbon::now();
-        $input['created_at'] = \Carbon\Carbon::now();
-        
-        if(ProductModel::insert($input)){
-            return array("response"=>true);
-        }else{
-            return array("response"=>false);
-        }
+       
     }
     public function editProductAPI(Request $req,$pid){
            
