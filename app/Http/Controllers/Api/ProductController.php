@@ -84,7 +84,7 @@ class ProductController extends Controller
         $input['product_distributorprice'] = $req->dprice;
         $input['product_retailerprice'] = $req->rprice;
         $input['product_description'] = $req->description;
-        $input['product_companyid'] = $id;
+        $input['product_companyid'] = $req->id;
         $input['updated_at'] = \Carbon\Carbon::now();
         $input['created_at'] = \Carbon\Carbon::now();
         
