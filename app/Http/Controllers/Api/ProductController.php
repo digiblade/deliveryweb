@@ -61,12 +61,12 @@ class ProductController extends Controller
         try{
             $path = 'assets/product/';
             // unlink($path.$req->oldimg);
-            $subcategoryImage = $req->file('pImage');
-            $sCImage = date("Y_m_d_H_i_s");
-            $ext = strtolower($subcategoryImage->getClientOriginalExtension());
-            $imageName = $sCImage.".".$ext;
-            $subcategoryImage->move($path,$imageName);
-            $input['product_image'] = $imageName;
+            // $subcategoryImage = $req->file('pImage');
+            // $sCImage = date("Y_m_d_H_i_s");
+            // $ext = strtolower($subcategoryImage->getClientOriginalExtension());
+            // $imageName = $sCImage.".".$ext;
+            // $subcategoryImage->move($path,$imageName);
+            // $input['product_image'] = $imageName;
             $input['product_name'] = $req->pName;        
             $input['product_hsncode'] = $req->hsncode;
             $input['product_baseprice'] = $req->baseprice;
