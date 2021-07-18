@@ -34,7 +34,11 @@ Route::post('/order/view',[ProductController::class,'getOrder']);
 //product company
 Route::get('/company/products/{id}',[ProductController::class,'getProductAPI']);
 Route::post('/company/addproduct',[ProductController::class,'addProductAPI']);
+Route::post('/p', [ProductController::class,'addProduct']);
 Route::post('/company/product',[ProductController::class,'addProductDataAPI']);
 Route::get('/company/editproduct/{pid}',[ProductController::class,'editProductAPI']);
 Route::post('/company/product/edit',[ProductController::class,'editProductDataAPI']);
 Route::get('/company/deleteproduct/{pid}',[ProductController::class,'deleteProductDataAPI']);
+
+//Manufacturing
+Route::post('/company/manufacturing/add',[ProductController::class,'addManufacturingDataAPI']);

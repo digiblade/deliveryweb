@@ -56,7 +56,9 @@ class ProductController extends Controller
         $data = ProductModel::where("product_companyid","=",$id)->orderBy('id','desc')->with('category','category.sku')->get();
         return $data;
     }
-    
+    public function addProduct(Request $req){
+        return array("data"=>$req->data);
+    }
     public function addProductDataAPI(Request $req){
         try{
             $path = 'assets/product/';
@@ -184,17 +186,6 @@ return array("response"=>true,"error"=>"something went wrong");
         // return view('Company.Product.Manufacturing.addmanufacturing',compact('data'));
     }
     public function addManufacturingDataAPI(Request $req){
-        // $validate = validator([
-        //     'sku' => 'required',
-        //     'mcode'=> 'required',
-        //     'baseprice'=> 'required',
-        //     'sprice'=> 'required',
-        //     'dprice'=> 'required',
-        //     'rprice'=> 'required',
-        //     'count'=> 'required',
-        // ]);
-
-
         $input['manufacturing_skuid'] = $req->sku;        
         $input['manufacturing_code'] = $req->mcode;
         $input['manufacturing_baseprice'] = $req->baseprice;
