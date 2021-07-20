@@ -36,7 +36,7 @@ Route::get('/company/products/{id}',[ProductController::class,'getProductAPI']);
 Route::post('/company/addproduct',[ProductController::class,'addProductAPI']);
 Route::post('/company/product',[ProductController::class,'addProductDataAPI']);
 Route::get('/company/editproduct/{pid}',[ProductController::class,'editProductAPI']);
-Route::post('/company/product/edit',[ProductController::class,'editProductDataAPI']);
+Route::put('/company/product/edit/{pid}',[ProductController::class,'editProductDataAPI']);
 Route::get('/company/deleteproduct/{pid}',[ProductController::class,'deleteProductDataAPI']);
 
 //Manufacturing
