@@ -34,11 +34,24 @@ Route::post('/order/view',[ProductController::class,'getOrder']);
 //product company
 Route::get('/company/products/{id}',[ProductController::class,'getProductAPI']);
 Route::post('/company/addproduct',[ProductController::class,'addProductAPI']);
-Route::post('/p', [ProductController::class,'addProduct']);
 Route::post('/company/product',[ProductController::class,'addProductDataAPI']);
 Route::get('/company/editproduct/{pid}',[ProductController::class,'editProductAPI']);
 Route::post('/company/product/edit',[ProductController::class,'editProductDataAPI']);
 Route::get('/company/deleteproduct/{pid}',[ProductController::class,'deleteProductDataAPI']);
 
 //Manufacturing
+// Route::post('/company/manufacturing/add',[ProductController::class,'addManufacturingDataAPI']);
+//manufacturing
+Route::get('/company/manufacturing/{pid}',[ProductController::class,'getManufacturingAPI']);
+Route::get('/company/addmanufacturing/{pid}',[ProductController::class,'addManufacturingAPI']);
 Route::post('/company/manufacturing/add',[ProductController::class,'addManufacturingDataAPI']);
+Route::get('/company/editmanufacturing/{pid}',[ProductController::class,'editManufacturingAPI']);
+Route::post('/company/manufacturing/edit',[ProductController::class,'editManufacturingDataAPI']);
+Route::get('/company/deletemanufacturing/{pid}',[ProductController::class,'deleteManufacturingDataAPI']);
+//category
+Route::get('/company/category',[CompanyController::class,'category']);
+Route::get('/company/addcategory',[CompanyController::class,'addCategory']);
+Route::post('/company/category/add',[CompanyController::class,'addCategoryData']);
+Route::get('/company/editcategory/{cid}',[CompanyController::class,'editCategory']);
+Route::post('/company/category/edit',[CompanyController::class,'editCategoryData']);
+Route::get('/company/deletecategory/{cid}',[CompanyController::class,'deleteCategoryData']);
