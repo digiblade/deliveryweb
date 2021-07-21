@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\orderModel;
 
 class OrderController extends Controller
 {
@@ -17,5 +18,8 @@ class OrderController extends Controller
         $data['subtype'] = "";
         $data['order'] = orderModel::where("order_userid","=",$id)->get();
         return View('Company.Order.order',compact('data'));
+    }
+    public function getOrderAPI(Request $req){
+        return  orderModel::where([["order_userid","=",$req->id],["order_usertype","=",$req->type]])->with('product','sku','user')->get();
     }
 }

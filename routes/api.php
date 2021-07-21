@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\OrderController;
 
 
 /*
@@ -55,3 +56,6 @@ Route::post('/company/category/add',[ProductController::class,'addCategoryDataAP
 Route::get('/company/editcategory/{cid}',[ProductController::class,'editCategoryAPI']);
 Route::post('/company/category/edit',[ProductController::class,'editCategoryDataAPI']);
 Route::get('/company/deletecategory/{cid}',[ProductController::class,'deleteCategoryDataAPI']);
+
+//order
+Route::post('/company/order',[OrderController::class,'getOrderAPI']);
