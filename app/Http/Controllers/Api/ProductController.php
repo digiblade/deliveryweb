@@ -8,6 +8,7 @@ use App\Models\ProductModel;
 use App\Models\orderModel;
 use App\Models\UserModel;
 use App\Models\CategoryModel;
+use App\Models\ManufacturingModel;
 class ProductController extends Controller
 {
     public function getProducts(){
