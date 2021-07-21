@@ -287,7 +287,7 @@ return array("response"=>true,"error"=>"something went wrong");
        
         if($req->hasFile('cImage')){
             $path = 'assets/categories/';
-            unlink($path.$req->oldimg);
+            // unlink($path.$req->oldimg);
             $categoryImage = $req->file('cImage');
             $cImage = date("Y_m_d_H_i_s");
             $ext = strtolower($categoryImage->getClientOriginalExtension());
