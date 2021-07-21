@@ -159,8 +159,8 @@ return array("response"=>true,"error"=>"something went wrong");
     public function getManufacturingAPI(Request $req,$pid){
         
            
-        $data['productid'] = $pid;   
-        $data['manufacturing'] = ManufacturingModel::where("manufacturing_productid","=",$pid)->orderBy('manufacturing_id','desc')->get();
+       
+        $data['manufacturing'] = ManufacturingModel::where("manufacturing_productid","=",$pid)->orderBy('manufacturing_id','desc')->with('sku','Product')->get();
         return $data;
         // return view('Company.Product.Manufacturing.manufacturing',compact('data'));
         }
