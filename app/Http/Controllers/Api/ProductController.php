@@ -258,8 +258,8 @@ return array("response"=>true,"error"=>"something went wrong");
     //sku
     public function categoryAPI(Request $req){
         // $id = $req->id;
-        $data= CategoryModel::orderBy('id','desc')->get();
-        return $data;
+         
+        return CategoryModel::orderBy('id','desc')->get();
     }
   
     public function addCategoryDataAPI(Request $req){
