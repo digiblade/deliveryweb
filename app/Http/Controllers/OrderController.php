@@ -20,6 +20,6 @@ class OrderController extends Controller
         return View('Company.Order.order',compact('data'));
     }
     public function getOrderAPI(Request $req){
-        return  orderModel::where([["order_userid","=",$req->id],["order_usertype","=",$req->type]])->with('product','sku','user')->get();
+        return  orderModel::with('product','sku','user')->get();
     }
 }
