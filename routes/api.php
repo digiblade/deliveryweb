@@ -49,9 +49,9 @@ Route::get('/company/editmanufacturing/{pid}',[ProductController::class,'editMan
 Route::post('/company/manufacturing/edit',[ProductController::class,'editManufacturingDataAPI']);
 Route::get('/company/deletemanufacturing/{pid}',[ProductController::class,'deleteManufacturingDataAPI']);
 //category
-Route::get('/company/category',[CompanyController::class,'category']);
-Route::get('/company/addcategory',[CompanyController::class,'addCategory']);
-Route::post('/company/category/add',[CompanyController::class,'addCategoryData']);
-Route::get('/company/editcategory/{cid}',[CompanyController::class,'editCategory']);
-Route::post('/company/category/edit',[CompanyController::class,'editCategoryData']);
-Route::get('/company/deletecategory/{cid}',[CompanyController::class,'deleteCategoryData']);
+Route::get('/company/category',[ProductController::class,'categoryAPI']);
+Route::get('/company/addcategory',[ProductController::class,'addCategoryAPI']);
+Route::post('/company/category/add',[ProductController::class,'addCategoryDataAPI']);
+Route::get('/company/editcategory/{cid}',[ProductController::class,'editCategoryAPI']);
+Route::post('/company/category/edit',[ProductController::class,'editCategoryDataAPI']);
+Route::get('/company/deletecategory/{cid}',[ProductController::class,'deleteCategoryDataAPI']);

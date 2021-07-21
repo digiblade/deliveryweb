@@ -256,15 +256,13 @@ return array("response"=>true,"error"=>"something went wrong");
         }
     }
     //sku
-    public function category(Request $req){
-        
-        
-        $id = $req->id;
+    public function categoryAPI(Request $req){
+        // $id = $req->id;
         $data['category'] = CategoryModel::orderBy('id','desc')->get();
         return view('Company.Category.category',compact('data'));
     }
   
-    public function addCategoryData(Request $req){
+    public function addCategoryDataAPI(Request $req){
       
         $categoryImage = $req->file('cImage');
         $cImage = date("Y_m_d_H_i_s");
@@ -285,7 +283,7 @@ return array("response"=>true,"error"=>"something went wrong");
         }
     }
    
-    public function editCategoryData(Request $req){
+    public function editCategoryDataAPI(Request $req){
        
         if($req->hasFile('cImage')){
             $path = 'assets/categories/';
@@ -308,7 +306,7 @@ return array("response"=>true,"error"=>"something went wrong");
         }
     }
     
-    public function deleteCategoryData($cid){
+    public function deleteCategoryDataAPI($cid){
         if(CategoryModel::find($cid)->delete()){
             return redirect()->back()->with('success','Category deleted successfully');
         }else{
@@ -316,7 +314,7 @@ return array("response"=>true,"error"=>"something went wrong");
         }
 
     }
-    public function getCategory(Request $req,$cid){
+    public function getCategoryAPI(Request $req,$cid){
         $category = subcategoryModel::where('category_id','=',$cid)->get();
         return response()->json($category, 200)->header('Content-Type', 'application/json'); 
     }
