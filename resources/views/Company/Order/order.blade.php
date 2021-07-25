@@ -58,21 +58,21 @@
                     @php
                         $i = 1;
                     @endphp
-                    @foreach ($data['order'] as $item)
+                    @foreach ($order as $item)
                       <tr>
                         <td> {{$i++}}</td>
-                        <td>{{$item->user_name}}</td>
-                        <td>{{$item->user_email}}</td>
-                        <td>{{$item->user_mobile}}</td>
-                        <td>{{$item->user_firmname}}</td>
+                        <td>{{$item->user->user_name }} {{$item->user->user_email}}</td>
+                        <td>{{$item->user->user_email}}</td>
+                        <td>{{$item->user->user_mobile}}</td>
+                        <td>{{$item->product->product_baseprice}}</td>
                         <td>{{$item->user_gstNo}}</td>
                         <td>{{$item->user_officeaddress}}</td>
                         <td>{{$item->user_godownaddress}}</td>
                         <td>{{$item->user_description}}</td>
                         <td>{{$item->created_at}}</td>
                         <td>
-                            <a href="{{url('/')}}/company/edituser/{{$type}}/{{$item->user_id}}" class="btn btn-primary m-2"><i class="fa fa-edit"></i></a>
-                            <a href="{{url('/')}}/company/user/delete/{{$item->user_id}}" class="btn btn-danger m-2"><i class="fa fa-trash"></i></a>
+                            {{-- <a href="{{url('/')}}/company/edituser/{{$type}}/{{$item->user_id}}" class="btn btn-primary m-2"><i class="fa fa-edit"></i></a> --}}
+                            {{-- <a href="{{url('/')}}/company/user/delete/{{$item->user_id}}" class="btn btn-danger m-2"><i class="fa fa-trash"></i></a> --}}
                         </td>
                       </tr>
 

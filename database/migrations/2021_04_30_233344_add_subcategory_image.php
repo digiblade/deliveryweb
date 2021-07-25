@@ -13,9 +13,9 @@ class AddSubcategoryImage extends Migration
      */
     public function up()
     {
-        Schema::table('tbl_subcategory',function(BluePrint $table){
-            $table->string('subcategory_image');
-        });
+        // Schema::table('tbl_subcategory',function(BluePrint $table){
+        //     $table->string('subcategory_image');
+        // });
     }
 
     /**

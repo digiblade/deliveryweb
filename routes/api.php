@@ -59,3 +59,6 @@ Route::get('/company/deletecategory/{cid}',[ProductController::class,'deleteCate
 
 //order
 Route::post('/company/order',[OrderController::class,'getOrderAPI']);
+Route::get('/stock/{cid}',[OrderController::class,'getStock']);
+Route::post('/stock/get',[OrderController::class,'getStockByData']);
+Route::post('/stock/changeStatus',[OrderController::class,'changeStatus']);

@@ -13,9 +13,9 @@ class AddImageAndName extends Migration
      */
     public function up()
     {
-        Schema::table('tbl_users',function(BluePrint $table){
-            $table->string('user_image');
-        });
+        // Schema::table('tbl_users',function(BluePrint $table){
+        //     $table->string('user_image');
+        // });
     }
 
     /**

@@ -13,22 +13,22 @@ class CreateUserModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_users',function(BluePrint $table){
-            $table->id('user_id');
-            $table->string('user_name')->nullable();
-            $table->string('user_email')->unique();
-            $table->string('user_password');
-            $table->integer('user_type')->nullable();
-            $table->string("user_firmname")->nullable();
-            $table->string("user_mobile")->nullable();
-            $table->string("user_gstNo")->nullable();
-            $table->text("user_officeaddress")->nullable();
-            $table->text("user_godownaddress")->nullable();
-            $table->text("user_description")->nullable();
-            $table->integer('user_parentid')->nullable();
-            $table->rememberToken();
-            $table->timestamps();
-        });
+        // Schema::create('tbl_users',function(BluePrint $table){
+        //     $table->id('user_id');
+        //     $table->string('user_name')->nullable();
+        //     $table->string('user_email')->unique();
+        //     $table->string('user_password');
+        //     $table->integer('user_type')->nullable();
+        //     $table->string("user_firmname")->nullable();
+        //     $table->string("user_mobile")->nullable();
+        //     $table->string("user_gstNo")->nullable();
+        //     $table->text("user_officeaddress")->nullable();
+        //     $table->text("user_godownaddress")->nullable();
+        //     $table->text("user_description")->nullable();
+        //     $table->integer('user_parentid')->nullable();
+        //     $table->rememberToken();
+        //     $table->timestamps();
+        // });
     }
 
     /**

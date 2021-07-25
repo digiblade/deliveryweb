@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,7 +61,7 @@ Route::post('/company/manufacturing/add',[ProductController::class,'addManufactu
 Route::get('/company/editmanufacturing/{pid}',[ProductController::class,'editManufacturing']);
 Route::post('/company/manufacturing/edit',[ProductController::class,'editManufacturingData']);
 Route::get('/company/deletemanufacturing/{pid}',[ProductController::class,'deleteManufacturingData']);
-
+Route::get('/order',[OrderController::class,"getOrder"]);
 //user
 Route::get('/company/adduser',[UserController::class,'createUser']);
 Route::post('/company/user/add',[UserController::class,'createUserData']);
