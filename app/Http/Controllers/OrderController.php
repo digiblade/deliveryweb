@@ -55,7 +55,7 @@ class OrderController extends Controller
                          return array("response"=>true);
                     }
                     else{
-                        return array("response"=>false);
+                        return array("response"=>false ,"error"=>"update fail");
                     }
                 }else{
                     $input['stock_userid'] = $req->uid;
@@ -71,7 +71,7 @@ class OrderController extends Controller
                         return array("response"=>true);
                     }
                     else{
-                        return array("response"=>false);
+                        return array("response"=>false,"error"=>"insert fail");
                     }
                 }
             }
