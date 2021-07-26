@@ -39,11 +39,11 @@ class OrderController extends Controller
             $inputC['status'] = $req->status;
             // $input['created_at']=\Carbon\Carbon::now();
             $inputC['updated_at']=\Carbon\Carbon::now();
-            if(orderModel::where("order_id","=", $req->id)->update($inputC)){
+            orderModel::where("order_id","=", $req->id)->update($inputC);
                 
-            }else{
-                return array("response"=>false,"error"=>"not update fail");
-            }
+            // }else{
+            //     return array("response"=>false,"error"=>"not update fail");
+            // }
             if($req->status == "CONFIRM"){
                 $data= StockModel::where("stock_companyid","=",$req->cid)->where("stock_userid","=",$req->uid)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->get();
                 if (count($data)>0){
