@@ -44,7 +44,7 @@ class OrderController extends Controller
             }else{
                 return array("response"=>false,"error"=>"not update fail");
             }
-            if($req->status == "CONFIRM"){
+            if($req->status != "PENDING" && $req->status != "DELIVERED"){
                 $data= StockModel::where("stock_companyid","=",$req->cid)->where("stock_userid","=",$req->uid)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->get();
                 if (count($data)>0){
                  
