@@ -24,4 +24,7 @@ class NewUser extends Authenticatable
     public function getAuthPassword(){
         return $this->user_password;
     }
+    public function user(){
+        return $this->hasOne(NewUser::class,"user_id","user_parentid");
+    }
 }

@@ -81,7 +81,18 @@ class OrderController extends Controller
         }
       
     }
-    // public function changeOrderStatus($status,$id){
-     
-    // }
+    public function getProductById(Request $req){
+        $id = $req->id;
+        $user = NewUser::where(
+            "user_id","=",$id
+        )->get()->first();
+        $parent = NewUser::where("user_id","=",$user->user_parentid)->get();
+        if(count($parent)>0){
+            $p = $parent->first();
+            return StockModel::where('stock_userid',"=",$p->user_email)->with('product','sku','user')->get();
+        }else{
+            return array("response"=>false);
+        }
+        
+    }
 }
