@@ -64,9 +64,9 @@ class OrderController extends Controller
                     $input['stock_companyid'] = $req->cid;
                     $input['stock_total'] = $req->qty;
                     $input['stock_remaining'] = $req->qty;
-                    $input['stock_price']=$req->price;
-                    $input['created_at']=\Carbon\Carbon::now();
-                    $input['updated_at']=\Carbon\Carbon::now();
+                    $input['stock_price'] = $req->price;
+                    $input['created_at'] = \Carbon\Carbon::now();
+                    $input['updated_at'] = \Carbon\Carbon::now();
                     if(StockModel::insert($input)){
                         return array("response"=>true);
                     }
