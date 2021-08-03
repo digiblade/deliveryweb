@@ -55,7 +55,7 @@ class ProductController extends Controller
     }
     public function getProductAPI(Request $req,$id){ 
         $cid = UserModel::where("user_id","=",$id)->get()->first()->user_parentid;
-        echo $cid;
+        // echo $cid;
         $data = ProductModel::where("product_companyid","=",$cid)->orderBy('id','desc')->with('category','category.sku')->get();
         return $data;
     }
