@@ -50,18 +50,18 @@ class OrderController extends Controller
                 // return $stock;
                 $man["stock"] = 0;
                 foreach($stock as $res){
-                    if($man["stock"]< $req->qty){
+                    if($man["stock"]<= $req->qty){
                         if(((double)$req->qty-(double)$man["stock"]) >= ((double)$res->manufacturing_totalcount - (double)$res->manufacturing_sold)){
-                            if(((double)$res->manufacturing_totalcount - (double)$res->manufacturing_sold)!=0){
+                            // if(((double)$res->manufacturing_totalcount - (double)$res->manufacturing_sold)!=0){
                                 $man["stock"] += ((double)$res->manufacturing_totalcount - (double)$res->manufacturing_sold);
-                            }
+                            // }
                            
                             ManufacturingModel::where("manufacturing_id","=",(double)$res->manufacturing_id)->update(['manufacturing_sold'=>$res->manufacturing_totalcount]);
                         }else{
-                             
-                            $man['stock'] += ((double)$req->qty - $man['stock']);
-                   
-                            ManufacturingModel::where("manufacturing_id","=",(double)$res->manufacturing_id)->update(['manufacturing_sold'=>((double)$res->qty - $man['stock'])]);
+                              $st = ((double)$req->qty - (double)$man['stock']);
+                            $man['stock'] += $st;
+                           
+                            ManufacturingModel::where("manufacturing_id","=",(double)$res->manufacturing_id)->update(['manufacturing_sold'=>$st]);
                             break;
                         }
                     }
