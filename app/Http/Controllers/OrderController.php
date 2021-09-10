@@ -7,7 +7,7 @@ use App\Models\orderModel;
 use App\Models\AssetsModel;
 use App\Models\NewUser;
 use App\Models\StockModel;
-
+use App\Models\ManufacturingModel;
 class OrderController extends Controller
 {
     public function getOrder(){
@@ -46,13 +46,29 @@ class OrderController extends Controller
             }
             if($req->status != "PENDING" && $req->status != "DELIVERED"){
                 $data= StockModel::where("stock_companyid","=",$req->cid)->where("stock_userid","=",$req->uid)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->get();
+                $stock = ManufacturingModel::where("manufacturing_productid","=",$req->pid)->where("manufacturing_skuid","=",$req->sid)->get();
+                
+                $man["stock"] = 0;
+                foreach($stock as $res){
+                    if($man["stock"]< $req->qty){
+                        if($req->qty > ($res->manufacturing_totalcount - $res->manufacturing_sold)){
+                            $man["stock"] += ($res->manufacturing_totalcount - $res->manufacturing_sold);
+                            ManufacturingModel::where("manufacturing_id","=",$res->manufacturing_id)->update(['manufacturing_sold'=>$res->manufacturing_totalcount]);
+                        }else{
+                            $man['stock'] += $res->qty - $man['stock'];
+                            ManufacturingModel::where("manufacturing_id","=",$res->manufacturing_id)->update(['manufacturing_sold'=>($res->qty - $man['stock'])]);
+                            break;
+                        }
+                    }
+                }
                 if (count($data)>0){
-                 
                      $input['stock_total'] = $data[0]['stock_total']+$req->qty;
                      $input['stock_remaining'] = $data[0]['stock_remaining']+$req->qty;
+                     
                      $input['updated_at']=\Carbon\Carbon::now();
                     if(StockModel::where("stock_companyid","=",$req->cid)->where("stock_userid","=",$req->uid)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->update($input)){
-                         return array("response"=>true);
+                       
+                        return array("response"=>true);
                     }
                     else{
                         return array("response"=>false ,"error"=>"update fail");
@@ -74,12 +90,17 @@ class OrderController extends Controller
                         return array("response"=>false,"error"=>"insert fail");
                     }
                 }
+
             }
+           
             
         }catch(Exception $e){
             return $e;
         }
       
+    }
+    public function stockDiduct(){
+        
     }
     public function getProductById(Request $req){
         $id = $req->id;
