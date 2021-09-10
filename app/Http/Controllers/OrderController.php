@@ -50,9 +50,9 @@ class OrderController extends Controller
                 // return $stock;
                 $man["stock"] = 0;
                 foreach($stock as $res){
-                    echo ((double)$req->qty );
+                    echo ((double)$req->qty);
                     if($man["stock"]< $req->qty){
-                        if((double)$req->qty > ((double)$res->manufacturing_totalcount - (double)$res->manufacturing_sold)){
+                        if((double)$req->qty >= ((double)$res->manufacturing_totalcount - (double)$res->manufacturing_sold)){
                             echo "1st";
                             $man["stock"] += ($res->manufacturing_totalcount - $res->manufacturing_sold);
                             ManufacturingModel::where("manufacturing_id","=",$res->manufacturing_id)->update(['manufacturing_sold'=>$res->manufacturing_totalcount]);
