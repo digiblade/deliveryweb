@@ -65,6 +65,7 @@ class OrderController extends Controller
                             break;
                         }
                     }
+                    echo $man['stock'];
                 }
                 die();
                 if (count($data)>0){
