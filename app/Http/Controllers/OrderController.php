@@ -50,7 +50,7 @@ class OrderController extends Controller
                 // return $stock;
                 $man["stock"] = 0;
                 foreach($stock as $res){
-                    echo ( (double)$res->manufacturing_totalcount - (double)$res->manufacturing_sold );
+                    echo ((double)$req->qty> (double)$res->manufacturing_totalcount - (double)$res->manufacturing_sold );
                     if($man["stock"]< $req->qty){
                         if((double)$req->qty > ((double)$res->manufacturing_totalcount - (double)$res->manufacturing_sold)){
                             echo "1st";
