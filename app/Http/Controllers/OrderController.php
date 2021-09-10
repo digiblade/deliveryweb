@@ -52,8 +52,10 @@ class OrderController extends Controller
                 foreach($stock as $res){
                     if($man["stock"]< $req->qty){
                         if(((double)$req->qty-(double)$man["stock"]) >= ((double)$res->manufacturing_totalcount - (double)$res->manufacturing_sold)){
-                            
-                            $man["stock"] += ((double)$res->manufacturing_totalcount - (double)$res->manufacturing_sold);
+                            if(((double)$res->manufacturing_totalcount - (double)$res->manufacturing_sold)!=0){
+                                $man["stock"] += ((double)$res->manufacturing_totalcount - (double)$res->manufacturing_sold);
+                            }
+                           
                             ManufacturingModel::where("manufacturing_id","=",(double)$res->manufacturing_id)->update(['manufacturing_sold'=>$res->manufacturing_totalcount]);
                         }else{
                              
@@ -64,6 +66,7 @@ class OrderController extends Controller
                         }
                     }
                 }
+                die();
                 if (count($data)>0){
                      $input['stock_total'] = $data[0]['stock_total']+$req->qty;
                      $input['stock_remaining'] = $data[0]['stock_remaining']+$req->qty;
