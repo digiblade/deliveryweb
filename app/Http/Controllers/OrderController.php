@@ -47,7 +47,7 @@ class OrderController extends Controller
             if($req->status != "PENDING" && $req->status != "DELIVERED"){
                 $data= StockModel::where("stock_companyid","=",$req->cid)->where("stock_userid","=",$req->uid)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->get();
                 $stock = ManufacturingModel::where("manufacturing_productid","=",$req->pid)->where("manufacturing_skuid","=",$req->sid)->get();
-                return $stock;
+                // return $stock;
                 $man["stock"] = 0;
                 foreach($stock as $res){
                     
