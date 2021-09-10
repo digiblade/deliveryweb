@@ -57,8 +57,9 @@ class OrderController extends Controller
                             $man["stock"] += ($res->manufacturing_totalcount - $res->manufacturing_sold);
                             ManufacturingModel::where("manufacturing_id","=",$res->manufacturing_id)->update(['manufacturing_sold'=>$res->manufacturing_totalcount]);
                         }else{
-                             echo "2st";
+                             
                             $man['stock'] += $res->qty - $man['stock'];
+                            echo $man['stock'];
                             ManufacturingModel::where("manufacturing_id","=",$res->manufacturing_id)->update(['manufacturing_sold'=>($res->qty - $man['stock'])]);
                             break;
                         }
