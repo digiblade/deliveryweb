@@ -47,9 +47,10 @@ class OrderController extends Controller
             if($req->status != "PENDING" && $req->status != "DELIVERED"){
                 $data= StockModel::where("stock_companyid","=",$req->cid)->where("stock_userid","=",$req->uid)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->get();
                 $stock = ManufacturingModel::where("manufacturing_productid","=",$req->pid)->where("manufacturing_skuid","=",$req->sid)->get();
-                return $stock;
+                
                 $man["stock"] = 0;
                 foreach($stock as $res){
+                    print_r($res);
                     if($man["stock"]< $req->qty){
                         if($req->qty > ($res->manufacturing_totalcount - $res->manufacturing_sold)){
                             $man["stock"] += ($res->manufacturing_totalcount - $res->manufacturing_sold);
@@ -61,6 +62,7 @@ class OrderController extends Controller
                         }
                     }
                 }
+                die();
                 if (count($data)>0){
                      $input['stock_total'] = $data[0]['stock_total']+$req->qty;
                      $input['stock_remaining'] = $data[0]['stock_remaining']+$req->qty;
