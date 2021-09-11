@@ -131,6 +131,7 @@ class OrderController extends Controller
                         $input2['stock_remaining'] = $data[0]['stock_remaining']-$req->qty;
                         $input2['updated_at']=\Carbon\Carbon::now();
                         $stock = NewUser::where("user_id","=",$req->cid)->get()->first();
+                        return $stock;
                         StockModel::where("stock_userid","=",$stock->user_email)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->update($input2);
                         return array("response"=>true);
                     }
