@@ -62,6 +62,7 @@ Route::post('/company/order',[OrderController::class,'getOrderAPI']);
 Route::get('/stock/{cid}',[OrderController::class,'getStock']);
 Route::post('/stock/get',[OrderController::class,'getStockByData']);
 Route::post('/stock/changeStatus',[OrderController::class,'changeStatus']);
+Route::post('/stock/changeStatus/user',[OrderController::class,'changeStatusC']);
 
 //
 Route::post('/getStock',[OrderController::class,'getProductById']);
