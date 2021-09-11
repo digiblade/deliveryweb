@@ -106,8 +106,61 @@ class OrderController extends Controller
         }
       
     }
-    public function stockDiduct(){
-        
+    public function changeStatusC(Request $req){
+        try{
+            $inputC['status'] = $req->status;
+            // $input['created_at']=\Carbon\Carbon::now();
+            $inputC['updated_at']=\Carbon\Carbon::now();
+            if(orderModel::where("order_id","=", $req->id)->update($inputC)){
+                
+            }else{
+                return array("response"=>false,"error"=>"not update fail");
+            }
+            if($req->status != "PENDING" && $req->status != "DELIVERED"){
+                $data= StockModel::where("stock_companyid","=",$req->cid)->where("stock_userid","=",$req->uid)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->get();
+                
+                // return $stock;
+                $man["stock"] = 0;
+                
+                // die();
+                if (count($data)>0){
+                     $input['stock_total'] = $data[0]['stock_total']+$req->qty;
+                     $input['stock_remaining'] = $data[0]['stock_remaining']+$req->qty;
+                     $input['updated_at']=\Carbon\Carbon::now();
+                    if(StockModel::where("stock_companyid","=",$req->cid)->where("stock_userid","=",$req->uid)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->update($input)){
+                        $input2['stock_remaining'] = $data[0]['stock_remaining']-$req->qty;
+                        $input2['updated_at']=\Carbon\Carbon::now();
+                        StockModel::where("stock_userid","=",$req->cid)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->update($input2);
+                        return array("response"=>true);
+                    }
+                    else{
+                        return array("response"=>false ,"error"=>"update fail");
+                    }
+                }else{
+                    $input['stock_userid'] = $req->uid;
+                    $input['stock_productid'] = $req->pid;
+                    $input['stock_skuid'] = $req->sid;
+                    $input['stock_companyid'] = $req->cid;
+                    $input['stock_total'] = $req->qty;
+                    $input['stock_remaining'] = $req->qty;
+                    $input['stock_price'] = $req->price;
+                    $input['created_at'] = \Carbon\Carbon::now();
+                    $input['updated_at'] = \Carbon\Carbon::now();
+                    if(StockModel::insert($input)){
+                        return array("response"=>true);
+                    }
+                    else{
+                        return array("response"=>false,"error"=>"insert fail");
+                    }
+                }
+
+            }
+           
+            
+        }catch(Exception $e){
+            return $e;
+        }
+      
     }
     public function getProductById(Request $req){
         $id = $req->id;
