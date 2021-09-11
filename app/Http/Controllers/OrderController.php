@@ -69,8 +69,8 @@ class OrderController extends Controller
                 }
                 // die();
                 if (count($data)>0){
-                     $input['stock_total'] = $data[0]['stock_total']+$req->qty;
-                     $input['stock_remaining'] = $data[0]['stock_remaining']+$req->qty;
+                     $input['stock_total'] = $data[0]['stock_total']+$man['stock'];
+                     $input['stock_remaining'] = $data[0]['stock_remaining']+$man['stock'];
                      
                      $input['updated_at']=\Carbon\Carbon::now();
                     if(StockModel::where("stock_companyid","=",$req->cid)->where("stock_userid","=",$req->uid)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->update($input)){
