@@ -65,9 +65,9 @@ class OrderController extends Controller
                             break;
                         }
                     }
-                    echo $man['stock'];
+                    // echo $man['stock'];
                 }
-                die();
+                // die();
                 if (count($data)>0){
                      $input['stock_total'] = $data[0]['stock_total']+$req->qty;
                      $input['stock_remaining'] = $data[0]['stock_remaining']+$req->qty;
