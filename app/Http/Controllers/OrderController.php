@@ -134,6 +134,8 @@ class OrderController extends Controller
                         return $stock;
                         if(StockModel::where("stock_userid","=",$stock->user_email)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->update($input2)){
                             return "update";
+                        }else{
+                             return "not update";
                         }
                         return array("response"=>true);
                     }
