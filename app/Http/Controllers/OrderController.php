@@ -122,8 +122,7 @@ class OrderController extends Controller
                 return array("response"=>false,"error"=>"not update fail");
             }
             if($req->status != "PENDING" && $req->status != "DELIVERED"){
-                $stock = NewUser::where("user_id","=",$req->idData)->get()->first();
-                $ndata = StockModel::where("stock_userid","=",$stock->user_email)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->get();
+                $ndata = StockModel::where("stock_companyid","=",$req->idData)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->get();
                 if((((double)$ndata[0]['stock_remaining']) - (double)$req->qty)<0){
                     return array("response"=>false ,"error"=>"out of stock");
                 }
