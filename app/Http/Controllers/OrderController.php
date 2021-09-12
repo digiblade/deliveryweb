@@ -149,6 +149,11 @@ class OrderController extends Controller
                         return array("response"=>false ,"error"=>"update fail");
                     }
                 }else{
+                     $stock = NewUser::where("user_id","=",$req->cid)->get()->first();
+                     $ndata = StockModel::where("stock_userid","=",$stock->user_email)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->get();
+                      if((((double)$ndata[0]['stock_remaining']) - (double)$req->qty)<0){
+                            return array("response"=>false ,"error"=>"out of stock");
+                        }
                     $input['stock_userid'] = $req->uid;
                     $input['stock_productid'] = $req->pid;
                     $input['stock_skuid'] = $req->sid;
@@ -159,7 +164,16 @@ class OrderController extends Controller
                     $input['created_at'] = \Carbon\Carbon::now();
                     $input['updated_at'] = \Carbon\Carbon::now();
                     if(StockModel::insert($input)){
+                         $input2['stock_remaining'] = (((double)$ndata[0]['stock_remaining']) - (double)$req->qty);
+                        $input2['updated_at']=\Carbon\Carbon::now();
+                       
+                        if(StockModel::where("stock_userid","=",$stock->user_email)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->update($input2)){
+                            return "update";
+                        }else{
+                             return "not update";
+                        }
                         return array("response"=>true);
+                       
                     }
                     else{
                         return array("response"=>false,"error"=>"insert fail");
