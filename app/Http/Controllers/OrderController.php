@@ -189,7 +189,7 @@ class OrderController extends Controller
         if(count($parent)>0){
             $p = $parent->first();
             // return $p;
-            return StockModel::where('stock_userid',"=",$p->user_email)->with('product','sku','user')->get();
+            return StockModel::where('stock_cid',"=",$p->user_id)->with('product','sku','user')->get();
         }else{
             return array("response"=>false);
         }
