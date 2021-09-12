@@ -49,7 +49,7 @@ class UserController extends Controller
             "user_name"=>$req->fullname,
             "user_mobile"=>$req->mobileno,
             "user_gstNo"=>$req->gst,
-            "user_email"=>$req->user_email,
+            "user_email"=>strtolower($req->user_email),
             "user_officeaddress"=>$req->officeadd,
             "user_godownaddress"=>$req->godownadd,
             'user_description'=>$req->description,
