@@ -130,9 +130,9 @@ class OrderController extends Controller
                     if(StockModel::where("stock_companyid","=",$req->cid)->where("stock_userid","=",$req->uid)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->update($input)){
                         $stock = NewUser::where("user_id","=",$req->cid)->get()->first();
                         $ndata = StockModel::where("stock_userid","=",$stock->user_email)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->get();
-                        $input2['stock_remaining'] = (((double)$ndata[0]['stock_remaining'])-(double)$req->qty);
+                        $input2['stock_remaining'] = (((double)$ndata[0]['stock_remaining']) - (double)$req->qty);
                         $input2['updated_at']=\Carbon\Carbon::now();
-                        
+                        return $input2;
                      return ((double)$req->qty);
                         if(StockModel::where("stock_userid","=",$stock->user_email)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->update($input2)){
                             return "update";
