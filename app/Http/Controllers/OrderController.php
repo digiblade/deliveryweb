@@ -117,15 +117,16 @@ class OrderController extends Controller
                 return array("response"=>false,"error"=>"not update fail");
             }
             if($req->status != "PENDING" && $req->status != "DELIVERED"){
-                $data= StockModel::where("stock_companyid","=",$req->cid)->where("stock_userid","=",$req->uid)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->get();
-                
-                // return $stock;
-                $man["stock"] = 0;
                 $stock = NewUser::where("user_id","=",$req->cid)->get()->first();
                 $ndata = StockModel::where("stock_userid","=",$stock->user_email)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->get();
                 if((((double)$ndata[0]['stock_remaining']) - (double)$req->qty)<0){
                     return array("response"=>false ,"error"=>"out of stock");
                 }
+                $data= StockModel::where("stock_companyid","=",$req->cid)->where("stock_userid","=",$req->uid)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->get();
+                
+                // return $stock;
+                $man["stock"] = 0;
+                
                 $input2['stock_remaining'] = (((double)$ndata[0]['stock_remaining']) - (double)$req->qty);
                 $input2['updated_at']=\Carbon\Carbon::now(); 
                 if(StockModel::where("stock_userid","=",$stock->user_email)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->update($input2)){
