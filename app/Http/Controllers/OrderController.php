@@ -129,7 +129,9 @@ class OrderController extends Controller
                 $input2['stock_remaining'] = (((double)$ndata[0]['stock_remaining']) - (double)$req->qty);
                 $input2['updated_at']=\Carbon\Carbon::now(); 
                 if(StockModel::where("stock_userid","=",$stock->user_email)->where("stock_productid","=",$req->pid)->where("stock_skuid","=",$req->sid)->update($input2)){
-                    return "update";
+                    // return "update";
+                }else{
+                    return array("response"=>false ,"error"=>"update fail");
                 }
                 // die();
                 if (count($data)>0){
