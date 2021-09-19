@@ -97,7 +97,7 @@ class ProductController extends Controller
         ]);
         if($req->hasFile('pImage')){
             $path = 'assets/product/';
-            unlink($path.$req->oldimg);
+            // unlink($path.$req->oldimg);
             $subcategoryImage = $req->file('pImage');
             $sCImage = date("Y_m_d_H_i_s");
             $ext = strtolower($subcategoryImage->getClientOriginalExtension());
